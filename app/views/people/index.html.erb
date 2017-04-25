@@ -1,6 +1,6 @@
 <div id="app">
   <div v-for="person in people">
-    <h2>{{ person.name }}</h2>
+    <h2 v-on:click="toggleBio(person)">{{ person.name }}</h2>
     <p v-if="person.bioVisible">{{ person.bio }}</p>
   </div>
 </div>

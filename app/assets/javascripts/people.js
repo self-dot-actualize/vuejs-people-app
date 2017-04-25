@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         {name: "Tibor", bio: "Incididunt photo booth ethical reprehenderit adipisicing", bioVisible: false},
         {name: "Ziva", bio: "Excepteur shabby chic semiotics Marfa", bioVisible: false}
       ]
+    },
+    methods: {
+      toggleBio: function(inputPerson) {
+        inputPerson.bioVisible = !inputPerson.bioVisible;
+      }
     }
   });
 });

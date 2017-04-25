@@ -1,6 +1,6 @@
 <div id="app">
   <div v-for="person in people">
     <h2>{{ person.name }}</h2>
-    <p>{{ person.bio }}</p>
+    <p v-if="person.bioVisible">{{ person.bio }}</p>
   </div>
 </div>

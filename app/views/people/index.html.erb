@@ -5,6 +5,7 @@
     Bio: <input type="text" v-model="newPersonBio">
     <button v-on:click="addPerson()">Add Person</button>
   </div>
+  <h4>Total number of people: {{ people.length }}</h4>
   <div v-for="person in people">
     <h2 v-on:click="toggleBio(person)">{{ person.name }}</h2>
     <p v-if="person.bioVisible">{{ person.bio }}</p>

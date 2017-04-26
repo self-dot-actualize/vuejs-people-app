@@ -12,6 +12,9 @@
   <div>
     Search by name: <input type="text" v-model="nameFilter">
   </div>
+  <div>
+    Search by bio: <input type="text" v-model="bioFilter">
+  </div>
   <div v-for="person in filteredPeople">
     <h2 v-on:click="toggleBio(person)">{{ person.name }}</h2>
     <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>

@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       errors: [],
       newPersonName: "",
       newPersonBio: "",
-      nameFilter: ""
+      nameFilter: "",
+      bioFilter: ""
     },
     computed: {
       filteredPeople: function() {
         var lowerNameFilter = this.nameFilter.toLowerCase();
+        var lowerBioFilter = this.bioFilter.toLowerCase();
         var filtered = this.people.filter(function(person) {
           var lowerName = person.name.toLowerCase();
-          return lowerName.indexOf(lowerNameFilter) !== -1;
+          var lowerBio = person.bio.toLowerCase();
+          return lowerName.indexOf(lowerNameFilter) !== -1 && lowerBio.indexOf(lowerBioFilter) !== -1;
         });
         return filtered;
       }

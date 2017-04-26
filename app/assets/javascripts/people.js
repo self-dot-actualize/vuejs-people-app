@@ -6,7 +6,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       people: [],
       errors: [],
       newPersonName: "",
-      newPersonBio: ""
+      newPersonBio: "",
+      nameFilter: ""
+    },
+    computed: {
+      filteredPeople: function() {
+        var lowerNameFilter = this.nameFilter.toLowerCase();
+        var filtered = this.people.filter(function(person) {
+          var lowerName = person.name.toLowerCase();
+          return lowerName.indexOf(lowerNameFilter) !== -1;
+        });
+        return filtered;
+      }
     },
     mounted: function() {
       $.get("/api/v1/people", function(responseData) {

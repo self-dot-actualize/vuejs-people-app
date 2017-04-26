@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         inputPerson.bioVisible = !inputPerson.bioVisible;
       },
       addPerson: function() {
-        this.people.push({name: this.newPersonName, bio: this.newPersonBio, bioVisible: false});
-        this.newPersonName = "";
-        this.newPersonBio = "";
+        var params = {name: this.newPersonName, bio: this.newPersonBio};
+        $.post("/api/v1/people", params, function(responseData) {
+          this.people.push(responseData);
+          this.newPersonName = "";
+          this.newPersonBio = "";
+        }.bind(this));
       },
       deletePerson: function(inputPerson) {
         var index = this.people.indexOf(inputPerson);

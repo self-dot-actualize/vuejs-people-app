@@ -15,6 +15,18 @@
   <div>
     Search by bio: <input type="text" v-model="bioFilter">
   </div>
+
+  <table border=1 width="100%">
+    <tr>
+      <th v-on:click="setSortAttribute('name')">Name</th>
+      <th v-on:click="setSortAttribute('bio')">Bio</th>
+    </tr>
+    <tr v-for="person in filteredPeople">
+      <td>{{ person.name }}</td>
+      <td>{{ person.bio }}</td>
+    </tr>
+  </table>
+
   <div>
     <button v-on:click="setSortAttribute('name')">Order by name</button>
     <button v-on:click="setSortAttribute('bio')">Order by bio</button>

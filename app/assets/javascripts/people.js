@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newPersonName: "",
       newPersonBio: "",
       nameFilter: "",
-      bioFilter: ""
+      bioFilter: "",
+      sortAttribute: "name"
     },
     computed: {
       filteredPeople: function() {
@@ -19,7 +20,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var lowerBio = person.bio.toLowerCase();
           return lowerName.indexOf(lowerNameFilter) !== -1 && lowerBio.indexOf(lowerBioFilter) !== -1;
         });
-        return filtered;
+        var sorted = filtered.sort(function(person1, person2) {
+          return person1[this.sortAttribute] > person2[this.sortAttribute];
+        }.bind(this));
+        return sorted;
       }
     },
     mounted: function() {
@@ -28,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }.bind(this));
     },
     methods: {
+      setSortAttribute: function(inputAttribute) {
+        this.sortAttribute = inputAttribute;
+      },
       toggleBio: function(inputPerson) {
         inputPerson.bioVisible = !inputPerson.bioVisible;
       },

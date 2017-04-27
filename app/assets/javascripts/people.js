@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newPersonBio: "",
       nameFilter: "",
       bioFilter: "",
-      sortAttribute: "name"
+      sortAttribute: "name",
+      sortAscending: true
     },
     computed: {
       filteredPeople: function() {
@@ -21,7 +22,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return lowerName.indexOf(lowerNameFilter) !== -1 && lowerBio.indexOf(lowerBioFilter) !== -1;
         });
         var sorted = filtered.sort(function(person1, person2) {
-          return person1[this.sortAttribute] > person2[this.sortAttribute];
+          if (this.sortAscending) {
+            return person1[this.sortAttribute] > person2[this.sortAttribute];
+          } else {
+            return person1[this.sortAttribute] < person2[this.sortAttribute];
+          }
         }.bind(this));
         return sorted;
       }
@@ -33,6 +38,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     },
     methods: {
       setSortAttribute: function(inputAttribute) {
+        if (inputAttribute === this.sortAttribute) {
+          this.sortAscending = !this.sortAscending;
+        } else {
+          this.sortAscending = true;
+        }
         this.sortAttribute = inputAttribute;
       },
       toggleBio: function(inputPerson) {

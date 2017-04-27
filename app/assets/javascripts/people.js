@@ -23,9 +23,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
         var sorted = filtered.sort(function(person1, person2) {
           if (this.sortAscending) {
-            return person1[this.sortAttribute] > person2[this.sortAttribute];
+            // return person1[this.sortAttribute] > person2[this.sortAttribute];
+            return person1[this.sortAttribute].localeCompare(person2[this.sortAttribute]);
           } else {
-            return person1[this.sortAttribute] < person2[this.sortAttribute];
+            // return person1[this.sortAttribute] < person2[this.sortAttribute];
+            return person2[this.sortAttribute].localeCompare(person1[this.sortAttribute]);
           }
         }.bind(this));
         return sorted;

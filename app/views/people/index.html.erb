@@ -34,9 +34,11 @@
     <button v-on:click="setSortAttribute('name')">Order by name</button>
     <button v-on:click="setSortAttribute('bio')">Order by bio</button>
   </div>
-  <div v-for="person in filteredPeople">
+  <transition-group name="fade">
+  <div v-for="person in filteredPeople" v-bind:key="person.id">
     <h2 v-on:click="toggleBio(person)">{{ person.name }}</h2>
     <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
     <button v-on:click="deletePerson(person)">Delete</button>
   </div>
+  </transition-group>
 </div>

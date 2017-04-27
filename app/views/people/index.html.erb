@@ -10,7 +10,10 @@
   </div>
   <h4>Total number of people: {{ people.length }}</h4>
   <div>
-    Search by name: <input type="text" v-model="nameFilter">
+    Search by name: <input type="text" v-model="nameFilter" list="names">
+    <datalist id="names">
+      <option v-for="person in people">{{ person.name }}</option>
+    </datalist>
   </div>
   <div>
     Search by bio: <input type="text" v-model="bioFilter">
